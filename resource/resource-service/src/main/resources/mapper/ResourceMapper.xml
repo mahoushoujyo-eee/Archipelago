@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.blogservice.mapper.ResourceMapper">
+    <resultMap id="ResourceMap" type="com.atguigu.param.ResourceParam">
+        <id property="id" column="id"/>
+        <result property="ossId" column="name_in_oss"/>
+        <result property="objectName" column="title"/>
+        <result property="size" column="size"/>
+        <result property="userId" column="creator_id"/>
+        <result property="createTime" column="creation_time"/>
+        <result property="type" column="type"/>
+    </resultMap>
+
+    <insert id="addResource">
+        INSERT INTO `resource`(`name_in_oss`, `size`, `title`, `creator_id`, `type`,  `modifier_id`)
+        VALUES (#{ossId}, #{size},  #{objectName}, #{userId}, #{type}, 0)
+    </insert>
+    <delete id="deleteResource">
+        DELETE FROM `resource`
+        WHERE `id` = #{id}
+    </delete>
+    <select id="getUserResource" resultMap="ResourceMap">
+        SELECT * FROM `resource`
+        WHERE `creator_id` = #{userId}
+        AND `type` = 0
+        ORDER BY `creation_time` DESC
+        LIMIT 10 OFFSET #{pageOffset}
+    </select>
+    <select id="getPublicPanResource" resultMap="ResourceMap">
+        SELECT * FROM `resource`
+        WHERE `type` = 1
+        ORDER BY `creation_time` DESC
+        LIMIT 10 OFFSET #{pageOffset}
+    </select>
+    <select id="getPublicCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM `resource`
+        WHERE `type` = 1
+    </select>
+    <select id="getPrivateCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM `resource`
+        WHERE `type` = 0
+        AND `creator_id` = #{userId}
+    </select>
+    <select id="getPrivateUsage" resultType="java.lang.Long">
+        SELECT SUM(`size`) FROM `resource`
+        WHERE `type` = 0
+        AND `creator_id` = #{userId}
+    </select>
+</mapper>

@@ -1,0 +1,408 @@
+/* 夜间模式专用样式文件 */
+
+/* 全局夜间模式样式 */
+.dark-mode {
+  /* 基础背景和文字颜色 */
+  background-color: var(--el-bg-color-page);
+  color: var(--el-text-color-primary);
+  
+  /* 页面标题样式 */
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--el-text-color-primary);
+  }
+  
+  /* 段落文字样式 */
+  p {
+    color: var(--el-text-color-regular);
+  }
+  
+  /* 链接样式 */
+  a {
+    color: var(--el-color-primary);
+  }
+  
+  /* 表单容器样式 */
+  .form-container {
+    background-color: var(--el-bg-color);
+    box-shadow: var(--el-box-shadow-light);
+  }
+  
+  /* 卡片样式 */
+  .blog-card {
+    background-color: var(--el-bg-color);
+    box-shadow: var(--el-box-shadow-light);
+  }
+  
+  /* 头部导航样式 */
+  .app-header {
+    background-color: rgba(20, 20, 20, 0.8) !important;
+    border-bottom-color: var(--el-border-color);
+  }
+  
+  .app-header.scrolled {
+    background-color: rgba(20, 20, 20, 0.95) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  .theme-toggle {
+    color: var(--el-text-color-primary);
+  }
+  
+  .mobile-nav {
+    background-color: var(--el-bg-color);
+  }
+  
+  /* 底部样式 */
+  .app-footer {
+    background-color: var(--el-bg-color);
+  }
+  
+  .footer-logo p {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .links-group h3 {
+    color: var(--el-text-color-primary);
+  }
+  
+  .links-group a {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .footer-bottom {
+    border-top-color: var(--el-border-color);
+  }
+  
+  .footer-bottom p {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .social-icons a {
+    color: var(--el-text-color-secondary);
+  }
+  
+  /* 首页样式 */
+  .hero-section {
+    background: url(../assets/title-img.png) no-repeat center/cover,
+                linear-gradient(135deg, rgba(10, 10, 10, 0.8) 0%, rgba(20, 20, 20, 0.8) 100%);
+    background-blend-mode: overlay;
+  }
+  
+  .hero-text h1 {
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    background-clip: unset !important;
+    color: var(--el-text-color-primary) !important;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hero-text h1 span {
+    background-clip: text !important;
+    -webkit-background-clip: text !important;
+    color: transparent !important;
+    text-shadow: none !important;
+  }
+  
+  .hero-text p {
+    color: var(--el-text-color-secondary);
+  }
+  
+  /* 特色文章部分 */
+  .section-header h2 {
+    color: var(--el-text-color-primary);
+  }
+  
+  /* Newsletter部分 */
+  .newsletter-section {
+    background-color: var(--el-fill-color);
+  }
+  
+  .newsletter-content h2 {
+    color: var(--el-text-color-primary);
+  }
+  
+  .newsletter-content p {
+    color: var(--el-text-color-secondary);
+  }
+  
+  /* 博客页面样式 */
+  .page-header h1 {
+    color: var(--el-text-color-primary);
+  }
+  
+  /* 博客详情页样式 */
+  .author-name {
+    color: var(--el-text-color-primary);
+  }
+  
+  .publish-date {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .blog-title {
+    color: var(--el-text-color-primary);
+  }
+  
+  /* 博客摘要和内容 */
+  .blog-excerpt {
+    color: var(--el-text-color-regular);
+  }
+  
+  .comments-section {
+    border-top-color: var(--el-border-color);
+  }
+  
+  .comments-section h2 {
+    color: var(--el-text-color-primary);
+  }
+  
+  .login-prompt {
+    background-color: var(--el-fill-color);
+  }
+  
+  .comment {
+    border-bottom-color: var(--el-border-color);
+  }
+  
+  .comment-author-name {
+    color: var(--el-text-color-primary);
+  }
+  
+  .comment-date {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .comment-content {
+    color: var(--el-text-color-regular);
+  }
+  
+  /* 管理员页面样式 */
+  .admin-dashboard h1,
+  .create-blog h1,
+  .edit-blog h1 {
+    color: var(--el-text-color-primary);
+  }
+  
+  .cover-upload {
+    border-color: var(--el-border-color);
+  }
+  
+  .editor-container {
+    border-color: var(--el-border-color);
+  }
+  
+  .comments-management h2 {
+    color: var(--el-text-color-primary);
+  }
+  
+  .comment-content p {
+    color: var(--el-text-color-regular);
+  }
+  
+  /* 用户页面样式 */
+  .profile-page h1 {
+    color: var(--el-text-color-primary);
+  }
+  
+  .profile-tabs {
+    background-color: var(--el-bg-color);
+  }
+  
+  .activity-section h3 {
+    color: var(--el-text-color-primary);
+  }
+  
+  .activity-item {
+    border-bottom-color: var(--el-border-color);
+  }
+  
+  .activity-content p {
+    color: var(--el-text-color-regular);
+  }
+  
+  .activity-date {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .empty-state {
+    color: var(--el-text-color-secondary);
+  }
+  
+  /* 认证页面样式 */
+  .auth-footer {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .text-button {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .text-button:hover {
+    background-color: var(--el-fill-color-light);
+    color: var(--el-text-color-regular);
+  }
+  
+  .success-container h2 {
+    color: var(--el-text-color-primary);
+  }
+  
+  .success-container p {
+    color: var(--el-text-color-secondary);
+  }
+  
+  .form-description {
+    color: var(--el-text-color-secondary);
+  }
+  
+  /* Vditor 编辑器夜间模式 */
+  .vditor {
+    --vditor-background-color: var(--el-bg-color);
+    --vditor-color: var(--el-text-color-primary);
+    --vditor-border-color: var(--el-border-color);
+  }
+  
+  /* Element Plus 组件夜间模式补充 */
+  .el-loading-mask {
+    background-color: var(--el-mask-color);
+  }
+  
+  .el-overlay {
+    background-color: var(--el-mask-color);
+  }
+  
+  .el-popper {
+    background-color: var(--el-bg-color-overlay);
+    border-color: var(--el-border-color);
+  }
+  
+  .el-tooltip__popper {
+    background-color: var(--el-bg-color-overlay);
+    color: var(--el-text-color-primary);
+  }
+  
+  .el-notification {
+    background-color: var(--el-bg-color-overlay);
+    border-color: var(--el-border-color);
+    color: var(--el-text-color-primary);
+  }
+  
+  .el-drawer {
+    background-color: var(--el-bg-color);
+  }
+  
+  .el-drawer__header {
+    color: var(--el-text-color-primary);
+    border-bottom-color: var(--el-border-color);
+  }
+  
+  .el-drawer__body {
+    color: var(--el-text-color-primary);
+  }
+  
+  /* 滚动条夜间模式 */
+  ::-webkit-scrollbar-track {
+    background: var(--el-bg-color-page);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--el-border-color-dark);
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--el-text-color-placeholder);
+  }
+  
+  /* Markdown 内容夜间模式样式 */
+  .markdown-body {
+    color: #ffffff !important;
+  }
+  
+  .markdown-body h1,
+  .markdown-body h2,
+  .markdown-body h3,
+  .markdown-body h4,
+  .markdown-body h5,
+  .markdown-body h6 {
+    color: #ffffff !important;
+  }
+  
+  .markdown-body p {
+    color: #ffffff !important;
+  }
+  
+  .markdown-body li {
+    color: #ffffff !important;
+  }
+  
+  .markdown-body blockquote {
+    color: #cccccc !important;
+    border-left-color: #444444 !important;
+  }
+  
+  .markdown-body code {
+    color: #ffffff !important;
+    background-color: #2d3748 !important;
+  }
+  
+  .markdown-body pre {
+    background-color: #1e1e1e !important;
+  }
+  
+  .markdown-body pre code {
+    color: #ffffff !important;
+  }
+  
+  .markdown-body th,
+  .markdown-body td {
+    color: #ffffff !important;
+    border-color: #444444 !important;
+  }
+  
+  .markdown-body th {
+    background-color: #2d3748 !important;
+  }
+  
+  .markdown-body strong {
+    color: #ffffff !important;
+  }
+  
+  .markdown-body em {
+    color: #ffffff !important;
+  }
+  
+  /* 评论区内容夜间模式 */
+  .comments-section h2 {
+    color: #ffffff !important;
+  }
+  
+  .comment-content {
+    color: #ffffff !important;
+  }
+  
+  .comment-author-name {
+    color: #ffffff !important;
+  }
+  
+  .comment-date {
+    color: #cccccc !important;
+  }
+  
+  /* 作者信息夜间模式 */
+  .author-name {
+    color: #ffffff !important;
+  }
+  
+  .publish-date {
+    color: #cccccc !important;
+  }
+  
+  /* 博客标题夜间模式 */
+  .blog-title {
+    color: #ffffff !important;
+  }
+  
+  /* 其他文本内容夜间模式 */
+  .blog-excerpt {
+    color: #ffffff !important;
+  }
+}

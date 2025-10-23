@@ -1,0 +1,5 @@
+# Root-level ignore for config files across all modules
+**/*.yaml
+**/*.yml
+**/*.properties
+**/*.propeerties

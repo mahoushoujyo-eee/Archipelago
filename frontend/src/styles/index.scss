@@ -1,0 +1,347 @@
+/* Global styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1e293b;
+  background-color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Element Plus customization */
+:root {
+  --el-color-primary: #0288d1;
+  --el-color-success: #4caf50;
+  --el-color-warning: #ff9800;
+  --el-color-danger: #f44336;
+  --el-color-info: #909399;
+  
+  /* 亮色模式 Element Plus 变量 */
+  --el-bg-color: #ffffff;
+  --el-bg-color-page: #f2f3f5;
+  --el-bg-color-overlay: #ffffff;
+  --el-text-color-primary: #303133;
+  --el-text-color-regular: #606266;
+  --el-text-color-secondary: #909399;
+  --el-text-color-placeholder: #a8abb2;
+  --el-text-color-disabled: #c0c4cc;
+  --el-border-color: #dcdfe6;
+  --el-border-color-light: #e4e7ed;
+  --el-border-color-lighter: #ebeef5;
+  --el-border-color-extra-light: #f2f6fc;
+  --el-border-color-dark: #d4d7de;
+  --el-border-color-darker: #cdd0d6;
+  --el-fill-color: #f0f2f5;
+  --el-fill-color-light: #f5f7fa;
+  --el-fill-color-lighter: #fafafa;
+  --el-fill-color-extra-light: #fafcff;
+  --el-fill-color-dark: #ebedf0;
+  --el-fill-color-darker: #e6e8eb;
+  --el-fill-color-blank: #ffffff;
+  --el-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, 0.04), 0px 8px 20px rgba(0, 0, 0, 0.08);
+  --el-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.12);
+  --el-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, 0.12);
+  --el-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, 0.08), 0px 12px 32px rgba(0, 0, 0, 0.12), 0px 8px 16px -8px rgba(0, 0, 0, 0.16);
+}
+
+/* Dark mode colors */
+.dark-mode {
+  color: #f8fafc;
+  background-color: #121212;
+  
+  /* Element Plus customization for dark mode */
+  --el-bg-color: #141414;
+  --el-bg-color-page: #0a0a0a;
+  --el-bg-color-overlay: #1d1e1f;
+  --el-text-color-primary: #f1f5f9;
+  --el-text-color-regular: #e2e8f0;
+  --el-text-color-secondary: #cbd5e1;
+  --el-text-color-placeholder: #94a3b8;
+  --el-text-color-disabled: #64748b;
+  --el-border-color: #4c4d4f;
+  --el-border-color-light: #414243;
+  --el-border-color-lighter: #363637;
+  --el-border-color-extra-light: #2b2b2c;
+  --el-border-color-dark: #58585b;
+  --el-border-color-darker: #636466;
+  --el-fill-color: #2d2d2f;
+  --el-fill-color-light: #262629;
+  --el-fill-color-lighter: #1d1d20;
+  --el-fill-color-extra-light: #191919;
+  --el-fill-color-dark: #39393b;
+  --el-fill-color-darker: #424243;
+  --el-fill-color-blank: #141414;
+  --el-box-shadow: 0px 12px 32px 4px rgba(0, 0, 0, 0.36), 0px 8px 20px rgba(0, 0, 0, 0.72);
+  --el-box-shadow-light: 0px 0px 12px rgba(0, 0, 0, 0.72);
+  --el-box-shadow-lighter: 0px 0px 6px rgba(0, 0, 0, 0.72);
+  --el-box-shadow-dark: 0px 16px 48px 16px rgba(0, 0, 0, 0.72), 0px 12px 32px rgba(0, 0, 0, 0.84), 0px 8px 16px -8px rgba(0, 0, 0, 0.9);
+  
+  /* 自定义暗色模式变量 */
+  --el-mask-color: rgba(0, 0, 0, 0.8);
+  --el-mask-color-extra-light: rgba(0, 0, 0, 0.3);
+}
+
+/* App layout */
+#app {
+  min-height: 100vh;
+  padding-top: 64px; /* Header height */
+  display: flex;
+  flex-direction: column;
+  background-color: var(--el-bg-color-page);
+  transition: background-color 0.3s ease;
+}
+
+.main-container {
+  flex: 1;
+  margin-top: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* Tailwind-like helpers */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Element Plus overrides */
+.el-button--primary {
+  background-color: var(--el-color-primary);
+}
+
+.el-button--success {
+  background-color: var(--el-color-success);
+}
+
+.el-button--warning {
+  background-color: var(--el-color-warning);
+}
+
+.el-button--danger {
+  background-color: var(--el-color-danger);
+}
+
+/* Custom form styles */
+.form-container {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--el-bg-color);
+  border-radius: 8px;
+  box-shadow: var(--el-box-shadow-light);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: var(--el-text-color-primary);
+}
+
+.form-divider {
+  margin: 1.5rem 0;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: var(--el-text-color-secondary);
+}
+
+.form-divider::before,
+.form-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid var(--el-border-color);
+}
+
+.form-divider-text {
+  padding: 0 1rem;
+}
+
+/* Auth buttons */
+.oauth-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.oauth-button {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid var(--el-border-color);
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-regular);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.oauth-button:hover {
+  background-color: var(--el-fill-color);
+  border-color: var(--el-border-color-dark);
+}
+
+.github-button {
+  color: #fff;
+  background-color: #24292e;
+  border-color: #24292e;
+}
+
+.github-button:hover {
+  background-color: #2c3238;
+  border-color: #2c3238;
+  color: #fff;
+}
+
+.google-button {
+  color: #4285f4;
+  border-color: #4285f4;
+}
+
+.google-button:hover {
+  background-color: rgba(66, 133, 244, 0.05);
+}
+
+.dark-mode .google-button:hover {
+  background-color: rgba(66, 133, 244, 0.1);
+}
+
+/* Card styles */
+.el-card {
+  background-color: var(--el-bg-color);
+  border-color: var(--el-border-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.el-card__header {
+  background-color: var(--el-bg-color);
+  border-bottom-color: var(--el-border-color);
+}
+
+.el-card__body {
+  background-color: var(--el-bg-color);
+}
+
+/* Table styles */
+.el-table {
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-primary);
+}
+
+.el-table th.el-table__cell {
+  background-color: var(--el-fill-color-light);
+  color: var(--el-text-color-primary);
+}
+
+.el-table tr {
+  background-color: var(--el-bg-color);
+}
+
+.el-table--striped .el-table__body tr.el-table__row--striped td.el-table__cell {
+  background-color: var(--el-fill-color-lighter);
+}
+
+/* Input styles */
+.el-input__wrapper {
+  background-color: var(--el-bg-color);
+  border-color: var(--el-border-color);
+}
+
+.el-input__inner {
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-primary);
+}
+
+.el-input__inner::placeholder {
+  color: var(--el-text-color-placeholder);
+}
+
+/* Select styles */
+.el-select .el-input .el-input__inner {
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-primary);
+}
+
+/* Dropdown styles */
+.el-dropdown-menu {
+  background-color: var(--el-bg-color-overlay);
+  border-color: var(--el-border-color);
+}
+
+.el-dropdown-menu__item {
+  color: var(--el-text-color-primary);
+}
+
+.el-dropdown-menu__item:hover {
+  background-color: var(--el-fill-color);
+}
+
+/* Pagination styles */
+.el-pagination {
+  color: var(--el-text-color-primary);
+}
+
+.el-pagination .el-pager li {
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-primary);
+  border-color: var(--el-border-color);
+}
+
+.el-pagination .el-pager li:hover {
+  color: var(--el-color-primary);
+}
+
+.el-pagination .el-pager li.is-active {
+  background-color: var(--el-color-primary);
+  color: #fff;
+}
+
+/* Message styles */
+.el-message {
+  background-color: var(--el-bg-color-overlay);
+  border-color: var(--el-border-color);
+  color: var(--el-text-color-primary);
+}
+
+/* Dialog styles */
+.el-dialog {
+  background-color: var(--el-bg-color);
+}
+
+.el-dialog__header {
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-primary);
+}
+
+.el-dialog__body {
+  background-color: var(--el-bg-color);
+  color: var(--el-text-color-primary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .form-container {
+    padding: 1.5rem;
+  }
+  
+  .oauth-buttons {
+    flex-direction: column;
+  }
+}

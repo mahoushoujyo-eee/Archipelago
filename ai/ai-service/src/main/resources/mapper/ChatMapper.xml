@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.aiservice.mapper.ChatMapper">
+    <resultMap id="ModelMap" type="com.atguigu.aiservice.entity.Model">
+        <id property="id" column="id" />
+        <result property="modelName" column="name" />
+        <result property="description" column="description" />
+        <result property="level" column="level" />
+    </resultMap>
+
+    <resultMap id="HistoryMap" type="com.atguigu.aiservice.entity.Conversation">
+        <id property="id" column="id" />
+        <result property="title" column="title" />
+        <result property="conversationId" column="conversation_id" />
+        <result property="userId" column="user_id" />
+    </resultMap>
+
+    <resultMap id="MessageMap" type="com.atguigu.aiservice.entity.Message">
+        <id property="id" column="id" />
+        <result property="conversationId" column="conversation_id" />
+        <result property="type" column="type" />
+        <result property="content" column="content" />
+        <result property="timestamp" column="timestamp" />
+    </resultMap>
+
+
+
+    <insert id="addNewConversation">
+        INSERT INTO conversation(title, conversation_id, user_id, creator_id, modifier_id)
+        VALUES (#{question}, #{conversationId}, #{userId}, 0, 0)
+    </insert>
+    <delete id="deleteHistory">
+        DELETE FROM conversation
+        WHERE conversation_id = #{conversationId};
+        DELETE FROM SPRING_AI_CHAT_MEMORY
+        WHERE conversation_id = #{conversationId};
+    </delete>
+    <select id="ifConversationExist" resultType="java.lang.Boolean">
+        SELECT COUNT(*)
+        FROM conversation
+        WHERE conversation_id = #{conversationId}
+    </select>
+    <select id="getModelList" resultMap="ModelMap">
+        SELECT id, name, description, level FROM model
+    </select>
+    <select id="getConversationList" resultMap="HistoryMap">
+        SELECT id, title, conversation_id, user_id
+        FROM conversation
+        WHERE user_id = #{userId}
+        ORDER BY modification_time DESC
+    </select>
+    <select id="getConversation" resultMap="MessageMap">
+        SELECT * FROM SPRING_AI_CHAT_MEMORY
+        WHERE conversation_id = #{conversationId}
+    </select>
+
+</mapper>

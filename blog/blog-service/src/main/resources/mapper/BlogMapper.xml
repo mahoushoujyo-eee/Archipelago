@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.atguigu.blogservice.mapper.BlogMapper">
+    <resultMap id="BlogMap" type="com.atguigu.blogrpc.param.BlogParam">
+            <id property="id" column="id"/>
+            <result property="title" column="title"/>
+            <result property="userId" column="creator_id"/>
+            <result property="nickname" column="nickname"/>
+            <result property="ossId" column="name_in_oss"/>
+            <result property="imgUrl" column="img_url"/>
+            <result property="tags" column="tags"/>
+            <result property="creationTime" column="creation_time"/>
+            <result property="comments" column="comments"/>
+    </resultMap>
+
+    <insert id="addBlog">
+        INSERT INTO blog (title, creator_id,name_in_oss, img_url, tags, type, modifier_id)
+        VALUES (#{title}, #{userId}, #{ossId}, #{imgUrl}, #{tags}, 0, #{userId})
+    </insert>
+    <update id="shiftTop">
+        UPDATE blog
+        SET type = CASE WHEN type = 0 THEN 1 ELSE 0 END
+        WHERE id = #{id}
+    </update>
+    <update id="updateBlog">
+        UPDATE blog
+        SET title = #{title}, tags = #{tags}, modifier_id = #{userId}, modification_time = NOW()
+        WHERE id = #{id}
+    </update>
+    <delete id="deleteBlog">
+        DELETE b, l, c FROM blog b
+        LEFT JOIN `like` l ON b.id = l.blog_id
+        LEFT JOIN comment c ON b.id = c.blog_id
+        WHERE b.id = #{id}
+    </delete>
+    <select id="listBlogs" resultMap="BlogMap">
+        SELECT b.*, u.nickname, COUNT(DISTINCT l.id) as likes, COUNT(DISTINCT c.id) as comments
+        FROM blog b
+                 LEFT JOIN user u ON b.creator_id = u.id
+                 LEFT JOIN `like` l ON b.id = l.blog_id
+                 LEFT JOIN comment c ON b.id = c.blog_id
+        GROUP BY b.id, b.creation_time
+        ORDER BY b.creation_time DESC
+        LIMIT 10 OFFSET #{pageOffset}
+    </select>
+    <select id="getBlogById" resultMap="BlogMap">
+        SELECT b.*, u.nickname, COUNT(DISTINCT l.id) as likes, COUNT(DISTINCT c.id) as comments
+        FROM blog b
+                 LEFT JOIN user u ON b.creator_id = u.id
+                 LEFT JOIN `like` l ON b.id = l.blog_id
+                 LEFT JOIN comment c ON b.id = c.blog_id
+        WHERE b.id = #{id}
+        GROUP BY b.id
+    </select>
+    <select id="listTopBlogs" resultMap="BlogMap">
+        SELECT b.*, u.nickname, COUNT(DISTINCT l.id) as likes, COUNT(DISTINCT c.id) as comments
+        FROM blog b
+                 LEFT JOIN user u ON b.creator_id = u.id
+                 LEFT JOIN `like` l ON b.id = l.blog_id
+                 LEFT JOIN comment c ON b.id = c.blog_id
+        GROUP BY b.id, b.creation_time, b.type
+        ORDER BY b.type DESC, b.creation_time DESC
+        LIMIT 3
+    </select>
+    <select id="getBlogCount" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM blog
+    </select>
+</mapper>

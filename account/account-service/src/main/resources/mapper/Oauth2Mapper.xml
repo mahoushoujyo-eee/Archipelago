@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.eee.account.mapper.Oauth2Mapper">
+    <insert id="insertNewGithubUser">
+        INSERT INTO user (username, email, encrypted_password, nickname, github_info, creator_id, modifier_id)
+        VALUES (#{username}, #{email}, #{encryptedPassword}, #{nickname}, #{githubInfo}, #{creatorId}, #{modifierId})
+    </insert>
+    <update id="modifyUserGithubInfo">
+        UPDATE user
+        SET github_info = #{githubId}
+        WHERE email = #{email}
+    </update>
+    <select id="getUserByGithub" resultType="org.eee.model.entity.User">
+        SELECT *
+        FROM user
+        WHERE github_info = #{githubId}
+    </select>
+</mapper>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.eee.account.mapper.RoleMapper">
+    <insert id="registerRole">
+        INSERT INTO role (role_name, role_code, user_id, creator_id, modifier_id) VALUES (#{roleName}, #{roleCode}, #{userId}, #{creatorId}, #{modifierId})
+    </insert>
+    <select id="getRoleByUserId" resultType="org.eee.model.entity.Role">
+        SELECT * FROM role WHERE user_id = #{userId}
+    </select>
+</mapper>
